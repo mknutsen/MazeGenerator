@@ -1,6 +1,7 @@
 import mknutsen.graphicslibrary.graphicsobject.RectangleGraphicObject;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -18,6 +19,18 @@ public class Maze extends RectangleGraphicObject {
         rand = new Random();
     }
 
+    private final int[] entrance;
+
+    private final int[] exit;
+
+    private final int x;
+
+    private final int y;
+
+    private final int rowWidth;
+
+    private final int rowHeight;
+
     private int[][] maze;
 
     private Hashtable<Integer, Wall> walls;
@@ -26,10 +39,13 @@ public class Maze extends RectangleGraphicObject {
      * @param maze
      *         maze to turn into a graphic object
      */
-    public Maze(final int[][] maze, int x, int y, int width, int height) {
+    public Maze(final int[][] maze, int x, int y, int width, int height, int[] entrance, int[] exit) {
         super(x, y, width, height, false, null);
+        this.x = x;
+        this.y = y;
         this.maze = maze;
-        double rowWidth = width / maze.length, rowHeight = height / maze[0].length;
+        this.rowWidth = width / maze.length;
+        this.rowHeight = height / maze[0].length;
         walls = new Hashtable<>();
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
@@ -40,6 +56,8 @@ public class Maze extends RectangleGraphicObject {
                 }
             }
         }
+        this.entrance = entrance;
+        this.exit = exit;
     }
 
     public final static Maze mazeGenerator(int rows, int columns, int x, int y, int width, int height) {
@@ -71,7 +89,7 @@ public class Maze extends RectangleGraphicObject {
         maze[entrance[0]][entrance[1]] = 0;
         maze[exit[0]][exit[1]] = 0;
         recursiveMazeGenerator(maze, 1, 1, rows - 1, columns - 1);
-        return new Maze(maze, x, y, width, height);
+        return new Maze(maze, x, y, width, height, entrance, exit);
     }
 
     private static int[][] recursiveMazeGenerator(int[][] maze, int x1, int y1, int x2, int y2) {
@@ -90,8 +108,8 @@ public class Maze extends RectangleGraphicObject {
             return maze;
         } else if (horizontalOrVertical > .5) {
             int x = x1 + rand.nextInt(x2 - x1 - 2) + 1;
-            System.out.println("-----------------------------------------------");
-            System.out.println(x + ", ");
+            //System.out.println("-----------------------------------------------");
+            //            System.out.println(x + ", ");
             for (int y = y1; y < y2; y++) {
                 maze[x][y] = 1;
             }
@@ -106,7 +124,7 @@ public class Maze extends RectangleGraphicObject {
             recursiveMazeGenerator(maze, x + 1, y1, x2, y2);
         } else { // vertical wall
             int y = y1 + rand.nextInt(y2 - y1 - 2) + 1;
-            System.out.println(", " + y);
+            //            System.out.println(", " + y);
             for (int x = x1; x < x2; x++) {
                 maze[x][y] = 1;
             }
@@ -128,6 +146,8 @@ public class Maze extends RectangleGraphicObject {
         int[][] mazeArray;
         Scanner scan = new Scanner(mazeStream);
         ArrayList<String[]> strings = new ArrayList<>();
+        int[] entrance = {scan.nextInt(), scan.nextInt()};
+        int[] exit = {scan.nextInt(), scan.nextInt()};
         while (scan.hasNext()) {
             String[] items = scan.nextLine().split(" ");
             strings.add(items);
@@ -140,13 +160,37 @@ public class Maze extends RectangleGraphicObject {
         }
 
         scan.close();
-        return new Maze(mazeArray, x, y, width, height);
+        return new Maze(mazeArray, x, y, width, height, entrance, exit);
+    }
+
+    public int[] cellToCoordinates(int row, int col) {
+        int[] coordinates = new int[4];
+        coordinates[0] = (x + row * rowHeight);
+        coordinates[1] = (y + col * rowWidth);
+        coordinates[2] = coordinates[0] + rowHeight;
+        coordinates[3] = coordinates[1] + rowWidth;
+        return coordinates;
     }
 
     @Override
     public final boolean draw(final Graphics gr) {
         walls.forEach((key, value) -> value.draw(gr));
         return true;
+    }
+
+    public int[] getEntrance() {
+        return entrance;
+    }
+
+    public int[] getExit() {
+        return exit;
+    }
+
+    public boolean isWallHere(final MouseEvent e) {
+        int col = (e.getX() - y) / rowHeight;
+        int row = (e.getY() - x) / rowWidth;
+        //        System.out.println(maze[row][col] == 1);
+        return maze[row][col] == 1;
     }
 
     private static class Wall extends RectangleGraphicObject {
