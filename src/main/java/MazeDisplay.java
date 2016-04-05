@@ -16,7 +16,7 @@ public class MazeDisplay extends GraphicsComponent {
 
 
     public static void main(String[] args) {
-        new GraphicsDriver(700, 700, new MazeDisplay(Maze.mazeGenerator(30, 30, 0, 0, 700, 700, 2)));
+        new GraphicsDriver(700, 700, new MazeDisplay(Maze.mazeGenerator(32, 32, 0, 0, 700, 700)));
         //getClass().getResourceAsStream(mazeLoc)
     }
 
