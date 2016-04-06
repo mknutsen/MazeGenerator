@@ -1,3 +1,5 @@
+package mknutsen.mazegen;
+
 import mknutsen.graphicslibrary.GraphicsComponent;
 import mknutsen.graphicslibrary.GraphicsDriver;
 

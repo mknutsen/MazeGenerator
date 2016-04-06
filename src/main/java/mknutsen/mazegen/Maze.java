@@ -1,3 +1,5 @@
+package mknutsen.mazegen;
+
 import mknutsen.graphicslibrary.graphicsobject.RectangleGraphicObject;
 
 import java.awt.*;
@@ -61,6 +63,7 @@ public class Maze extends RectangleGraphicObject {
     }
 
     public final static Maze mazeGenerator(int rows, int columns, int x, int y, int width, int height) {
+        int z;
         int[][] maze = new int[rows][columns];
         for (int i = 0; i < maze.length; i++) {
             maze[i][0] = 1;
