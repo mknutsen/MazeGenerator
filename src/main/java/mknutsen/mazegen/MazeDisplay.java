@@ -29,7 +29,7 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
 
 
     public static void main(String[] args) {
-        new GraphicsDriver(1000, 1000, new MazeDisplay(Maze.mazeGenerator(30, 30, 0, 0, 1000, 1000)),
+        new GraphicsDriver(1000, 1000, new MazeDisplay(MazeGeneration.recursiveMazeGenerator(30, 30, 0, 0, 1000, 1000)),
                 new ResultScreen());
         //getClass().getResourceAsStream(mazeLoc)
     }
