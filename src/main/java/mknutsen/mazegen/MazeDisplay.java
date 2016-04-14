@@ -15,8 +15,10 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
     private final int[] entrance;
 
     private final int[] exit;
-    
+
     private final Maze maze;
+
+    private long startTime;
 
     private boolean started;
 
@@ -29,14 +31,15 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
 
 
     public static void main(String[] args) {
-        new GraphicsDriver(1000, 1000, new MazeDisplay(MazeGeneration.recursiveMazeGenerator(30, 30, 0, 0, 1000, 1000)),
-                new ResultScreen());
+        new GraphicsDriver(MazeConfigFile.PIXEL_WIDTH + 300, MazeConfigFile.PIXEL_HEIGHT, new MazeDisplay(MazeGeneration
+                .recursiveRandomMazeGenerator                                  (MazeConfigFile.COLUMN_NUM,
+                        MazeConfigFile.ROW_NUM, 0, 0,
+                        MazeConfigFile.PIXEL_WIDTH, MazeConfigFile.PIXEL_HEIGHT)), new ResultScreen());
         //getClass().getResourceAsStream(mazeLoc)
     }
 
     @Override
     public void paint(final Graphics g) {
-        System.out.println("repaint");
         super.paint(g);
         g.setColor(Color.white);
         g.fillRect(0, 0, getWidth(), getHeight());
@@ -46,7 +49,14 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
         }
         if (started) {
             maze.draw(g);
+            g.drawString((System.currentTimeMillis() - startTime) / 1000 + "", 1000, 100);
         }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        repaint();
     }
 
     @Override
@@ -63,14 +73,15 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
         if (!started) {
             if (isMouseInside(e, entrance)) {
                 started = true;
+                startTime = System.currentTimeMillis();
                 repaint();
             }
         } else {
             if (maze.isWallHere(e)) {
-                triggerCallback("failure");
+                triggerCallback("failure", System.currentTimeMillis() - startTime);
 
             } else if (isMouseInside(e, exit)) {
-                triggerCallback("success");
+                triggerCallback("success", System.currentTimeMillis() - startTime);
             }
         }
 
@@ -80,4 +91,5 @@ public class MazeDisplay extends GraphicsComponent implements MouseMotionListene
         //        System.out.println(e + " " + box);
         return (e.getY() > box[0] && e.getY() < box[2]) && (e.getX() > box[1] && e.getX() < box[3]);
     }
+
 }
