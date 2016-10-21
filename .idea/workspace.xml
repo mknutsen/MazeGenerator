@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82146916-d74f-4e0b-aee5-de3b93f275af" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/mazegen_jar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../GraphicsLibrary/GraphicsLibrary.iml" afterPath="$PROJECT_DIR$/../GraphicsLibrary/GraphicsLibrary.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../GraphicsLibrary/src/mknutsen/graphicslibrary/graphicsobject/RectangleGraphicObject.java" afterPath="$PROJECT_DIR$/../GraphicsLibrary/src/mknutsen/graphicslibrary/graphicsobject/RectangleGraphicObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mazegen.iml" afterPath="$PROJECT_DIR$/mazegen.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/Maze.java" afterPath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/Maze.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeConfigFile.java" afterPath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeConfigFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeDisplay.java" afterPath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeDisplay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeGeneration.java" afterPath="$PROJECT_DIR$/src/main/java/mknutsen/mazegen/MazeGeneration.java" />
     </list>
     <ignored path="mazegen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1067,12 +1051,12 @@
       <created>1477018672532</created>
       <option name="number" value="Default" />
       <updated>1477018672532</updated>
-      <workItem from="1477018674080" duration="2833000" />
+      <workItem from="1477018674080" duration="3113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2833000" />
+    <option name="totallyTimeSpent" value="3113000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
