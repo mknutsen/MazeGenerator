@@ -72,9 +72,15 @@ public final class MazeGeneration {
         //        scan.nextLine();
 
         double horizontalOrVertical = rand.nextDouble();
-        if (y2 - y1 <= 2 || x2 - x1 <= 2) {
+        if (y2 - y1 <= 2 && x2 - x1 <= 2) {
             return maze;
-        } else if (horizontalOrVertical > .5) {
+        }
+        if(y2-y1 <= 2) {
+            horizontalOrVertical = 1;
+        } else if(x2 - x1 <= 2){
+            horizontalOrVertical = 0;
+        }
+        if (horizontalOrVertical > .5) {
             int x = x1 + rand.nextInt(x2 - x1 - 2) + 1;
             //System.out.println("-----------------------------------------------");
             //            System.out.println(x + ", ");
@@ -111,20 +117,14 @@ public final class MazeGeneration {
     }
 
     private static int[][] recursiveMazeGenerator(int[][] maze, int x1, int y1, int x2, int y2, boolean vertical) {
-        //        for (int i = 0; i < maze.length; i++) {
-        //            for (int j = 0; j < maze[0].length; j++) {
-        //                System.out.print((maze[i][j] == 0 ? " " : "O") + " ");
-        //            }
-        //            System.out.println("");
-        //        }
-        //        System.out.println(x1 + " " + x2 + " " + y1 + " " + y2);
-        //        Scanner scan = new Scanner(System.in);
-        //        scan.nextLine();
-
-        double horizontalOrVertical = rand.nextDouble();
-        if (y2 - y1 <= 2 || x2 - x1 <= 2) {
+        if (y2 - y1 <= 2 && x2 - x1 <= 2) {
             return maze;
-        } else if (vertical) {
+        } else if (y2 - y1 <= 2 && x2 - x1 > 2) {
+            vertical = true;
+        } else if (y2 - y1 > 2 && x2 - x1 <= 2) {
+            vertical = false;
+        }
+        if (vertical) {
             int x = x1 + (x2 - x1) / 2;
             //System.out.println("-----------------------------------------------");
             //            System.out.println(x + ", ");

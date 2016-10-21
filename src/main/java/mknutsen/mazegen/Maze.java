@@ -80,7 +80,7 @@ public class Maze extends RectangleGraphicObject {
         int col = (e.getX() - y) / rowHeight;
         int row = (e.getY() - x) / rowWidth;
         //        System.out.println(maze[row][col] == 1);
-        if (row > maze.length || row < 0 || col > maze[0].length || col < 0) {
+        if (row >= maze.length || row < 0 || col >= maze[0].length || col < 0) {
             return false;
         } else {
             return maze[row][col] == 1;

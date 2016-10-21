@@ -13,7 +13,7 @@ public final class MazeConfigFile {
 
     public static final int COLUMN_NUM = 50;
 
-    public static final GenerationAlgorithm ALG = GenerationAlgorithm.RECURSIVE_NEAT;
+    public static GenerationAlgorithm ALG = GenerationAlgorithm.RECURSIVE_NEAT;
 
     //    public static final
     private MazeConfigFile() {
